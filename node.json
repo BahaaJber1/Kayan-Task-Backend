@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "#config/*": ["./src/config/*.js"],
+      "#controllers/*": ["./src/controllers/*.js"],
+      "#database/*": ["./src/database/*.js"],
+      "#dev_data/*": ["./src/dev_data/*.js"],
+      "#models/*": ["./src/models/*.js"],
+      "#routes/*": ["./src/routes/*.js"],
+      "#utils/*": ["./src/utils/*.js"],
+      "#zod/*": ["./src/zod/*.js"],
+      "#strategies/*": ["./src/strategies/*.js"]
+    }
+  }
+}

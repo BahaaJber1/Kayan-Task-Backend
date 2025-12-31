@@ -1,0 +1,35 @@
+{
+  "name": "backend",
+  "main": "index.js",
+  "packageManager": "yarn@4.12.0",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon ."
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-session": "^2.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "express-session": "^1.18.2",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.16.3",
+    "zod": "^4.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  },
+  "imports": {
+    "#config/*": "./src/config/*.js",
+    "#controllers/*": "./src/controllers/*.js",
+    "#database/*": "./src/database/*.js",
+    "#dev_data/*": "./src/dev_data/*.js",
+    "#models/*": "./src/models/*.js",
+    "#routes/*": "./src/routes/*.js",
+    "#utils/*": "./src/utils/*.js",
+    "#zod/*": "./src/zod/*.js",
+    "#strategies/*": "./src/strategies/*.js"
+  }
+}
