@@ -6,6 +6,10 @@ import {} from "dotenv/config";
 
 // Environment Mode
 const MODE = process.env.MODE ?? "development";
+const FRONTEND_URL_DEV =
+  process.env.FRONTEND_URL_DEV ?? "http://localhost:3000";
+const FRONTEND_URL_PROD =
+  process.env.FRONTEND_URL_PROD ?? "https://your-production-frontend.com";
 
 // Database Settings
 const DB_USER = process.env.DB_USER ?? "postgres";
@@ -32,6 +36,8 @@ const databaseSettings = {
 
 const serverSettings = {
   PORT,
+  FRONTEND_URL_DEV,
+  FRONTEND_URL_PROD,
 };
 
 const JWTSettings = {

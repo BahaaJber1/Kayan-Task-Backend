@@ -3,7 +3,7 @@ import database from "#database/database";
 import { addUserSchema } from "#zod/user/addUser.schema";
 import bcrypt from "bcrypt";
 
-const addUser = async (req, res, next) => {
+const signup = async (req, res, next) => {
   const parsedResult = addUserSchema.safeParse(req.body);
   if (!parsedResult.success) {
     const errorMessage = await JSON.parse(parsedResult.error.message)[0]
@@ -36,7 +36,7 @@ const addUser = async (req, res, next) => {
         req.login(user, (err) => {
           if (err) {
             return next(
-              new Error("Error logging in the user after registration" + err)
+              new Error("Error signing in the user after registration" + err)
             );
           }
           delete result.rows[0].password; // Remove password from the response
@@ -47,5 +47,29 @@ const addUser = async (req, res, next) => {
   );
 };
 
-export { addUser };
+const signoutUser = (req, res, next) => {
+  if (!req.isAuthenticated()) {
+    return next(new Error("User is not authenticated"));
+  }
+  req.logout((err) => {
+    if (err) {
+      return next(new Error("Error logging out the user: " + err));
+    }
 
+    res.clearCookie("sessionData");
+    res.status(200).json({ message: "User signed out successfully" });
+  });
+};
+
+const isAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    const user = {
+      role: req.session.passport.user.role,
+      name: req.session.passport.user.name,
+    };
+    res.status(200).send({ message: "User is authenticated", user });
+  }
+  return next(new Error("User is not authenticated"));
+};
+
+export { signup, signoutUser, isAuthenticated };

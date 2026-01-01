@@ -1,6 +1,6 @@
 {
   "name": "backend",
-  "main": "index.js",
+  "main": "server.js",
   "packageManager": "yarn@4.12.0",
   "type": "module",
   "scripts": {
@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
-    "cookie-session": "^2.1.1",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
@@ -30,6 +29,6 @@
     "#routes/*": "./src/routes/*.js",
     "#utils/*": "./src/utils/*.js",
     "#zod/*": "./src/zod/*.js",
-    "#strategies/*": "./src/strategies/*.js"
+    "#middleware/*": "./src/middleware/*.js"
   }
 }

@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS treatments (
+    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    visit_id uuid REFERENCES visits(id) ON DELETE CASCADE,
+    name VARCHAR(20) NOT NULL,
+    value SMALLINT NOT NULL,
+    amount SMALLINT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

@@ -3,15 +3,15 @@ import { Router } from "express";
 const baseRouter = Router();
 
 baseRouter.get("/success", (req, res, next) => {
-  req.session.user = req.user;
-
-  console.log(req.session);
-  res.cookie("sessionData", JSON.stringify(req.session));
-  res.send("Login successful!");
+  const user = {
+    role: req.session.passport.user.role,
+    name: req.session.passport.user.name,
+  };
+  res.send({ message: "Login successful", user });
 });
 
 baseRouter.get("/failure", (req, res, next) => {
-  res.send("Login failed. Please try again.");
+  res.status(400).send("Login failed. Please try again.");
 });
 
 export default baseRouter;

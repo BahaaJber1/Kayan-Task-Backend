@@ -1,18 +1,21 @@
 import { environmentMode, JWTSettings, serverSettings } from "#config/settings";
+import passportInstance from "#middleware/passport/localStrategy";
+import authenticationRouter from "#routes/authentication.routes";
 import baseRouter from "#routes/base.routes";
-import usersRouter from "#routes/users.routes";
-import passportInstance from "#strategies/localStrategy";
+import visitsRouter from "#routes/visits.routes";
 import cors from "cors";
 import express from "express";
 import session from "express-session";
-// import cookieSession from "cookie-session";
 
 const app = express();
 const PORT = serverSettings.PORT;
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin:
+      environmentMode.MODE === "production"
+        ? serverSettings.FRONTEND_URL_PROD
+        : serverSettings.FRONTEND_URL_DEV,
     credentials: true,
   })
 );
@@ -33,20 +36,13 @@ app.use(
   })
 );
 
-// app.use(
-//   cookieSession({
-//     name: "cookie-session",
-//     keys: [JWTSettings.SESSION_SECRET],
-//     maxAge: 24 * 60 * 60 * 1000, // 1 day
-//   })
-// );
-
 app.use(passportInstance.initialize());
 app.use(passportInstance.session());
 app.use(passportInstance.authenticate("session"));
 
-app.use("/api/v1/users", usersRouter);
+app.use("/api/v1/users", authenticationRouter);
 app.use("/", baseRouter);
+app.use("/api/v1/visits", visitsRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

@@ -25,3 +25,30 @@
 - Implement logout functionality to destroy user sessions.
 - Create the needed tables/models/schemas for the other functionality.
 </details>
+
+---
+
+<details>
+<summary>
+
+## Jan 1, 2026:
+
+</summary>
+
+### Updates: (@BahaaJber1)
+
+1. Removed `cookie-session` middleware and continued using `express-session` for session management.
+1. Implemented `signout` functionality to destroy sessions upon logout requests.
+1. The cookie cookie is now set and persist on the browser's cookie storage.
+1. Updated CORS configuration to dynamically set the `origin` based on the environment (development or production).
+1. Implemented an `isAuthenticated` controller to check if a user is logged in based on the session.
+1. Added a new route `/api/v1/users/verify` to return user information upon successful authentication.
+1. Updated the `/api/v1/users/success` route to return only essential user information (role and name).
+1. Created the `visits` & `treatments` tables in the database with relevant fields. 
+
+## TODO:
+
+- Create the needed tables/models/schemas for the other functionality.
+- Update the `api/v1/visits/book` to show the relevant data/errors.
+
+</details>

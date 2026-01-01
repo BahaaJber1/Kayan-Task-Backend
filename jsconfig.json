@@ -10,7 +10,7 @@
       "#routes/*": ["./src/routes/*.js"],
       "#utils/*": ["./src/utils/*.js"],
       "#zod/*": ["./src/zod/*.js"],
-      "#strategies/*": ["./src/strategies/*.js"]
+      "#middleware/*": ["./src/middleware/*.js"]
     }
   }
 }
