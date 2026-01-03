@@ -1,5 +1,5 @@
 import { environmentMode, JWTSettings, serverSettings } from "#config/settings";
-import passportInstance from "#middleware/passport/localStrategy";
+import passportInstance from "src/middlewares/passport/localStrategy";
 import authenticationRouter from "#routes/authentication.routes";
 import baseRouter from "#routes/base.routes";
 import usersRouter from "#routes/users.route";

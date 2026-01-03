@@ -74,13 +74,35 @@
 1. Updated the `visits` controller to handle errors properly and return meaningful messages to the frontend.
 1. Added the `active` status to the `visits` table to track if a visit is active.
 1. created the `acceptAndDeleteVisit` schema to handle both accepting and deleting visits.
-
-
+1. Created the `CancelVisit` controller function for patients & doctors to cancel their visits.
 
 ## TODO:
 
 - Implement rate limiting to prevent abuse of the API endpoints using `express-rate-limit`.
 - create email verification functionality using `nodemailer` & `react-email`.
-- Create the `cancelVisit` functionality for patients.
+
+</details>
+
+---
+
+<details>
+<summary>
+
+## Jan 3, 2026:
+
+</summary>
+
+### Updates: (@BahaaJber1)
+
+1. Updated the visits controller to fix the status update when a doctor accepts a visit to set it to `active`.
+1. Updated the SQL query in the `acceptVisit` controller function to correctly check for active visits.
+1. Updated the schema to remove the `scheduled` status and replaced it with `active` for clarity.
+1. Added falsy checks to ensure privileges are correctly enforced before accessing the database.
+1. Implemented the `CancelVisit` controller function to allow both patients and doctors to cancel their visits.
+
+## TODO:
+
+- Implement rate limiting to prevent abuse of the API endpoints using `express-rate-limit`.
+- create email verification functionality using `nodemailer` & `react-email`.
 
 </details>

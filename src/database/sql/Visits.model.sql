@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS visits (
     time VARCHAR(10),
     patient_notes VARCHAR(500),
     medical_notes VARCHAR(500),
-    status VARCHAR(15) CHECK (status IN ('scheduled', 'completed', 'cancelled', 'pending', 'active')) DEFAULT 'pending',
+    status VARCHAR(15) CHECK (status IN ('completed', 'cancelled', 'pending', 'active')) DEFAULT 'pending',
     amount SMALLINT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
