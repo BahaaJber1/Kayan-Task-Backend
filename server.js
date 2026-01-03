@@ -14,9 +14,9 @@ const PORT = serverSettings.PORT;
 app.use(
   cors({
     origin:
-      environmentMode.MODE === "production"
-        ? serverSettings.FRONTEND_URL_PROD
-        : serverSettings.FRONTEND_URL_DEV,
+      environmentMode.MODE === "development"
+        ? serverSettings.FRONTEND_URL_DEV
+        : serverSettings.FRONTEND_URL_PROD,
     credentials: true,
   })
 );
