@@ -20,7 +20,7 @@ const DB_NAME = process.env.DB_NAME ?? "kayan-health";
 const DB_CERT = process.env.DB_CERT ?? "";
 
 // Server Settings
-const PORT = process.env.PORT ?? 5000;
+const PORT = process.env.PORT;
 
 // JWT Settings
 const SALT_ROUNDS = Number(process.env.SALT_ROUNDS) ?? 10;
