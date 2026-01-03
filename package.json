@@ -30,5 +30,6 @@
     "#utils/*": "./src/utils/*.js",
     "#zod/*": "./src/zod/*.js",
     "#middlewares/*": "./src/middlewares/*.js"
-  }
+  },
+  "packageManager": "yarn@4.6.0"
 }
