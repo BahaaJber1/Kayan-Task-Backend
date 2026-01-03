@@ -10,7 +10,7 @@
       "#routes/*": ["./src/routes/*.js"],
       "#utils/*": ["./src/utils/*.js"],
       "#zod/*": ["./src/zod/*.js"],
-      "#middleware/*": ["src/middlewares/*.js"]
+      "#middlewares/*": ["./src/middlewares/*.js"]
     }
   }
 }

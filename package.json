@@ -29,6 +29,6 @@
     "#routes/*": "./src/routes/*.js",
     "#utils/*": "./src/utils/*.js",
     "#zod/*": "./src/zod/*.js",
-    "#middleware/*": "./src/middleware/*.js"
+    "#middlewares/*": "./src/middlewares/*.js"
   }
 }

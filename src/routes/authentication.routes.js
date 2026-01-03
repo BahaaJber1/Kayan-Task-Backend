@@ -1,5 +1,5 @@
 import * as usersController from "#controllers/authentication.controller";
-import passportInstance from "src/middlewares/passport/localStrategy";
+import passportInstance from "#middlewares/passport/localStrategy";
 import { Router } from "express";
 
 const authenticationRouter = Router();
