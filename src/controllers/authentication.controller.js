@@ -1,10 +1,10 @@
 import { JWTSettings } from "#config/settings";
 import database from "#database/database";
-import { addUserSchema } from "#zod/user/addUser.schema";
+import { signupSchema } from "#zod/authentication/signup.schema";
 import bcrypt from "bcrypt";
 
 const signup = async (req, res, next) => {
-  const parsedResult = addUserSchema.safeParse(req.body);
+  const parsedResult = signupSchema.safeParse(req.body);
   if (!parsedResult.success) {
     const errorMessage = await JSON.parse(parsedResult.error.message)[0]
       .message;
@@ -40,7 +40,9 @@ const signup = async (req, res, next) => {
             );
           }
           delete result.rows[0].password; // Remove password from the response
-          res.status(201).json({ user });
+          res
+            .status(201)
+            .send({ message: "User registered successfully", user });
         });
       });
     }
@@ -57,7 +59,7 @@ const signoutUser = (req, res, next) => {
     }
 
     res.clearCookie("sessionData");
-    res.status(200).json({ message: "User signed out successfully" });
+    res.send({ message: "User signed out successfully" });
   });
 };
 
@@ -67,7 +69,7 @@ const isAuthenticated = (req, res, next) => {
       role: req.session.passport.user.role,
       name: req.session.passport.user.name,
     };
-    res.status(200).send({ message: "User is authenticated", user });
+    res.send({ message: "User is authenticated", user });
   }
   return next(new Error("User is not authenticated"));
 };

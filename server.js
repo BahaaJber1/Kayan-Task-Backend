@@ -2,6 +2,7 @@ import { environmentMode, JWTSettings, serverSettings } from "#config/settings";
 import passportInstance from "#middleware/passport/localStrategy";
 import authenticationRouter from "#routes/authentication.routes";
 import baseRouter from "#routes/base.routes";
+import usersRouter from "#routes/users.route";
 import visitsRouter from "#routes/visits.routes";
 import cors from "cors";
 import express from "express";
@@ -20,7 +21,7 @@ app.use(
   })
 );
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.json({ limit: "10kb" })); // adds size limit to the incoming JSON payloads
 
 app.use(
   session({
@@ -40,9 +41,10 @@ app.use(passportInstance.initialize());
 app.use(passportInstance.session());
 app.use(passportInstance.authenticate("session"));
 
-app.use("/api/v1/users", authenticationRouter);
+app.use("/api/v1/authentication", authenticationRouter);
 app.use("/", baseRouter);
 app.use("/api/v1/visits", visitsRouter);
+app.use("/api/v1/users", usersRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

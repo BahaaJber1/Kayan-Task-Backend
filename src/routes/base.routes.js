@@ -6,12 +6,16 @@ baseRouter.get("/success", (req, res, next) => {
   const user = {
     role: req.session.passport.user.role,
     name: req.session.passport.user.name,
+    email: req.session.passport.user.email,
   };
-  res.send({ message: "Login successful", user });
+  res.send({ message: "Login successful, welcome in.", user });
 });
 
 baseRouter.get("/failure", (req, res, next) => {
-  res.status(400).send("Login failed. Please try again.");
+  res.status(401).send({
+    message: "signin failed, try again.",
+    reason: "Invalid credentials.",
+  });
 });
 
 export default baseRouter;

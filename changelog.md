@@ -44,11 +44,43 @@
 1. Implemented an `isAuthenticated` controller to check if a user is logged in based on the session.
 1. Added a new route `/api/v1/users/verify` to return user information upon successful authentication.
 1. Updated the `/api/v1/users/success` route to return only essential user information (role and name).
-1. Created the `visits` & `treatments` tables in the database with relevant fields. 
+1. Created the `visits` & `treatments` tables in the database with relevant fields.
 
 ## TODO:
 
 - Create the needed tables/models/schemas for the other functionality.
 - Update the `api/v1/visits/book` to show the relevant data/errors.
+- Create a middleware to protect routes that require authentication.
+
+</details>
+
+---
+
+<details>
+<summary>
+
+## Jan 2, 2026:
+
+</summary>
+
+### Updates: (@BahaaJber1)
+
+1. Created an `authenticationGuard` middleware to protect routes that require authentication.
+1. Applied the `authenticationGuard` middleware to the `visits` routes to ensure only authenticated users can access them.
+1. Created the `visits` controller with the needed functionality to handle (bookVisit for **patient**, acceptVisit for **doctor**, and getAllVisits for **finance**, **doctor**, and **patient**). With the needed validations using Zod schemas.
+1. Updated both the `Treatments` & `Visits` models.
+1. Created the required zod schemas for the visits, updated the authentication's schemas names for better clarity.
+1. Updated the name of the route from `users` to `authentication` to better reflect its purpose.
+1. Updated the `visits` controller to handle errors properly and return meaningful messages to the frontend.
+1. Added the `active` status to the `visits` table to track if a visit is active.
+1. created the `acceptAndDeleteVisit` schema to handle both accepting and deleting visits.
+
+
+
+## TODO:
+
+- Implement rate limiting to prevent abuse of the API endpoints using `express-rate-limit`.
+- create email verification functionality using `nodemailer` & `react-email`.
+- Create the `cancelVisit` functionality for patients.
 
 </details>

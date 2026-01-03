@@ -1,5 +1,5 @@
 import database from "#database/database";
-import { loginUserSchema } from "#zod/user/loginUser.schema";
+import { signinSchema } from "#zod/authentication/signin.schema";
 import bcrypt from "bcrypt";
 import passport from "passport";
 import { Strategy } from "passport-local";
@@ -12,7 +12,7 @@ passportInstance.use(
     password,
     cb
   ) {
-    const parsedResult = loginUserSchema.safeParse({ email, password });
+    const parsedResult = signinSchema.safeParse({ email, password });
     if (!parsedResult.success) {
       const errorMessage = JSON.parse(parsedResult.error.message)[0].message;
       return cb(new Error(errorMessage));

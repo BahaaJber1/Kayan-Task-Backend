@@ -1,6 +1,6 @@
 import z from "zod";
 
-const addUserSchema = z.object({
+const signinSchema = z.object({
   email: z.email("Invalid email address"),
   password: z
     .string()
@@ -14,8 +14,6 @@ const addUserSchema = z.object({
     .refine((value) => /[!@#$%^&*(),.?":{}|<>]/.test(value), {
       message: "Password must contain at least one special character",
     }),
-  role: z.enum(["doctor", "patient", "finance"]),
-  name: z.string().min(3, "Name must be at least 3 characters long"),
 });
 
-export { addUserSchema };
+export { signinSchema };
