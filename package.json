@@ -1,7 +1,6 @@
 {
   "name": "backend",
   "main": "server.js",
-  "packageManager": "yarn@4.6.0",
   "type": "module",
   "scripts": {
     "dev": "nodemon .",
