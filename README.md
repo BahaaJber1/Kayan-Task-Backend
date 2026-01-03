@@ -13,7 +13,7 @@ A comprehensive backend system for managing medical clinic operations, including
 - [Running the Application](#running-the-application)
 - [Folder Structure](#folder-structure)
 - [API Endpoints](#api-endpoints)
-- [Database Schema](#database-schema)
+- [Future Enhancements](#future-enhancements)
 
 ## 🎯 Overview
 
