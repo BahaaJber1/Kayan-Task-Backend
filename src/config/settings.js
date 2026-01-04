@@ -5,7 +5,8 @@ import {} from "dotenv/config";
 */
 
 // Environment Mode
-const MODE = process.env.MODE ?? "development";
+const MODE = process.env.MODE;
+console.log({ MODE });
 const FRONTEND_URL_DEV =
   process.env.FRONTEND_URL_DEV ?? "http://localhost:3000";
 const FRONTEND_URL_PROD =

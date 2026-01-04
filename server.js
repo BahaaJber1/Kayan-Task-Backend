@@ -15,6 +15,9 @@ const PORT = serverSettings.PORT;
 
 const PgSession = connectPgSimple(session);
 
+console.log({ MODE: environmentMode.MODE });
+if (environmentMode.MODE === "production") app.set("trust proxy", 1);
+
 app.use(
   cors({
     origin: [serverSettings.FRONTEND_URL_DEV, serverSettings.FRONTEND_URL_PROD],
@@ -23,9 +26,6 @@ app.use(
 );
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: "10kb" })); // adds size limit to the incoming JSON payloads
-
-
-app.set("trust proxy", 1); 
 
 app.use(
   session({
@@ -42,7 +42,7 @@ app.use(
       secure: environmentMode.MODE === "production",
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000, // 1 day
-      sameSite: "lax",
+      sameSite: environmentMode.MODE === "production" ? "none" : "lax",
     },
   })
 );
