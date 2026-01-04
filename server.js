@@ -24,6 +24,9 @@ app.use(
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: "10kb" })); // adds size limit to the incoming JSON payloads
 
+
+app.set("trust proxy", 1); 
+
 app.use(
   session({
     store: new PgSession({
