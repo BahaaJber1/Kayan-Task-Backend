@@ -1,4 +1,5 @@
-import * as usersController from "#controllers/authentication.controller";
+import * as authenticationController from "#controllers/authentication.controller";
+import database from "#database/database";
 import passportInstance from "#middlewares/passport/localStrategy";
 import { Router } from "express";
 
@@ -11,8 +12,12 @@ authenticationRouter.post(
     failureRedirect: "/failure",
   })
 );
-authenticationRouter.post("/signup", usersController.signup);
-authenticationRouter.post("/signout", usersController.signoutUser);
-authenticationRouter.get("/verify", usersController.isAuthenticated);
+authenticationRouter.post("/signup", authenticationController.signup);
+authenticationRouter.post("/signout", authenticationController.signoutUser);
+authenticationRouter.get("/verify", authenticationController.isAuthenticated);
+authenticationRouter.get("/current-user", async (req, res) => {
+  const result = await database.query("SELECT * FROM session");
+  res.send({ sessions: result.rows });
+});
 
 export default authenticationRouter;

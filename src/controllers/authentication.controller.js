@@ -65,12 +65,14 @@ const signoutUser = (req, res, next) => {
 
 const isAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
+    console.log({ isAuthenticated: true });
     const user = {
       role: req.session.passport.user.role,
       name: req.session.passport.user.name,
     };
-    res.send({ message: "User is authenticated", user });
+    return res.send({ message: "User is authenticated", user });
   }
+  console.log({ isAuthenticated: false });
   return next(new Error("User is not authenticated"));
 };
 

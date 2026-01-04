@@ -3,6 +3,7 @@ import { Router } from "express";
 const baseRouter = Router();
 
 baseRouter.get("/success", (req, res, next) => {
+  console.log("Successful login:", req.session.passport.user);
   const user = {
     role: req.session.passport.user.role,
     name: req.session.passport.user.name,
