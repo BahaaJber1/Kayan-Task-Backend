@@ -31,6 +31,7 @@ app.use(
       tableName: "session", // table name
       createTableIfMissing: true,
     }),
+    proxy: environmentMode.MODE === "production",
     secret: JWTSettings.SESSION_SECRET, // Used to sign session ID cookie
     resave: false, // Don't save session if unmodified
     saveUninitialized: false,
